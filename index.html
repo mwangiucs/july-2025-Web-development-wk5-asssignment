@@ -2,14 +2,26 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Simple JS Project</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Grade Calculator</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1 id="title">Welcome to My Project</h1>
-  <p id="message">This is a simple JavaScript assignment.</p>
-  <button id="btn">Click Me</button>
-  <ul id="list"></ul>
+  <div class="container">
+    <h1>🎓 Student Grade Calculator</h1>
+    <p>Enter marks for three subjects (out of 100):</p>
+
+    <!-- DOM Interaction #1: Inputs -->
+    <input type="number" id="subject1" placeholder="Subject 1">
+    <input type="number" id="subject2" placeholder="Subject 2">
+    <input type="number" id="subject3" placeholder="Subject 3">
+    
+    <!-- DOM Interaction #2: Button -->
+    <button onclick="calculateGrade()">Calculate Grade</button>
+
+    <!-- DOM Interaction #3: Output Area -->
+    <div id="result"></div>
+  </div>
 
   <script src="script.js"></script>
 </body>

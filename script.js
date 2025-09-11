@@ -1,63 +1,63 @@
-// ======================
-// Part 1: Variables & Conditionals
-// ======================
-let age = 18;
-let name = "Tom";
+/* ================================
+   PART 1: Variables & Conditionals
+   ================================ */
 
-if (age >= 18) {
-  console.log(name + " is an adult.");
-} else {
-  console.log(name + " is a minor.");
+// Declare global variables
+let subject1, subject2, subject3, average, grade;
+
+/* ================================
+   PART 2: Custom Functions
+   ================================ */
+
+// Function 1: Calculate average marks
+function calculateAverage(marksArray) {
+  let total = 0;
+  // PART 3: Loop Example #1 (for loop)
+  for (let i = 0; i < marksArray.length; i++) {
+    total += marksArray[i];
+  }
+  return total / marksArray.length;
 }
 
-// ======================
-// Part 2: Custom Functions
-// ======================
-function greet(userName) {
-  return "Hello, " + userName + "!";
+// Function 2: Determine grade from average
+function getGrade(avg) {
+  // PART 1: Conditionals
+  if (avg >= 70) return "A";
+  else if (avg >= 60) return "B";
+  else if (avg >= 50) return "C";
+  else if (avg >= 40) return "D";
+  else return "F";
 }
 
-function square(number) {
-  return number * number;
+/* ================================
+   PART 4: DOM Interactions
+   ================================ */
+
+// Function to calculate and display grade
+function calculateGrade() {
+  // Get values from input fields
+  subject1 = parseFloat(document.getElementById("subject1").value) || 0;
+  subject2 = parseFloat(document.getElementById("subject2").value) || 0;
+  subject3 = parseFloat(document.getElementById("subject3").value) || 0;
+
+  // Store marks in an array
+  let marks = [subject1, subject2, subject3];
+
+  // PART 3: Loop Example #2 (for...of loop to check validity)
+  for (let mark of marks) {
+    if (mark < 0 || mark > 100) {
+      document.getElementById("result").innerHTML = "⚠️ Please enter marks between 0 and 100!";
+      return;
+    }
+  }
+
+  // Calculate average and grade
+  average = calculateAverage(marks);
+  grade = getGrade(average);
+
+  // Display result
+  document.getElementById("result").innerHTML = `
+    Average: ${average.toFixed(2)} <br>
+    Grade: ${grade}
+  `;
 }
-
-console.log(greet(name));
-console.log("Square of 5 is:", square(5));
-
-// ======================
-// Part 3: Loops
-// ======================
-
-// Example 1: For loop
-for (let i = 1; i <= 3; i++) {
-  console.log("For loop count:", i);
-}
-
-// Example 2: While loop
-let count = 1;
-while (count <= 3) {
-  console.log("While loop count:", count);
-  count++;
-}
-
-// ======================
-// Part 4: DOM Interactions
-// ======================
-
-// 1. Change text of an element
-document.getElementById("title").textContent = "JavaScript Project Demo";
-
-// 2. Add event listener to button
-document.getElementById("btn").addEventListener("click", function () {
-  document.getElementById("message").textContent = "Button was clicked!";
-});
-
-// 3. Add items to list dynamically
-let fruits = ["Apple", "Banana", "Mango"];
-let list = document.getElementById("list");
-
-fruits.forEach(function (fruit) {
-  let li = document.createElement("li");
-  li.textContent = fruit;
-  list.appendChild(li);
-});
